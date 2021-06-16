@@ -5,10 +5,12 @@ import java.util.Arrays;
 
 import com.example.course.entities.Category;
 import com.example.course.entities.Order;
+import com.example.course.entities.Product;
 import com.example.course.entities.User;
 import com.example.course.entities.enums.OrderStatus;
 import com.example.course.repositories.CategoryRepository;
 import com.example.course.repositories.OrderRepository;
+import com.example.course.repositories.ProductRepository;
 import com.example.course.repositories.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,9 @@ public class TestConfig implements CommandLineRunner {
     @Autowired
     private CategoryRepository categoryRepository;
 
+    @Autowired
+    private ProductRepository productRepository;
+
     @Override
     public void run(String... args) throws Exception {
         // TODO Auto-generated method stub
@@ -45,11 +50,19 @@ public class TestConfig implements CommandLineRunner {
         Order order2 = new Order(null, Instant.parse("2019-07-21T03:42:10Z"), OrderStatus.WAITING_PAYMENT,user2);
         Order order3 = new Order(null, Instant.parse("2019-06-22T15:21:22Z"), OrderStatus.WAITING_PAYMENT,user1);
 
+        Product p1 = new Product(null, "The Lord of the Rings", "Lorem", 90.5, "");
+        Product p2 = new Product(null, "Smart TV", "Loremm", 2500.99, "");
+        Product p3 = new Product(null, "MacBook Pro", "Lorem", 8000.00, "");
+        Product p4 = new Product(null, "PC GAMER", "lorem", 4500.78, "");
+        Product p5 = new Product(null, "Rails for dummies", "lorem", 78.00, "");
+
+
 
 
         userRepository.saveAll(Arrays.asList(user1, user2));
         orderRepository.saveAll(Arrays.asList(order1, order2, order3));
         categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
+        productRepository.saveAll(Arrays.asList(p1,p2,p3,p4,p5));
         
     }
 }
