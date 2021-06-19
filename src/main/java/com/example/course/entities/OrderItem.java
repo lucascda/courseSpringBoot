@@ -30,7 +30,7 @@ public class OrderItem implements Serializable{
         this.price = price;
     }
 
-    @JsonIgnore
+    @JsonIgnore // evitar loop infinito
     public Order getOrder(){
         return id.getOrder();
     }
@@ -39,6 +39,7 @@ public class OrderItem implements Serializable{
         id.setOrder(order);
     }
 
+   
     public Product getProduct(){
         return id.getProduct();
     }
